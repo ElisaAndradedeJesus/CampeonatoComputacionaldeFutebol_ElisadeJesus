@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -I include
 SRC = main.c src/*.c
 OUT = programa
 
-.PHONY: all compile run clean
+.PHONY: all compile run clean reset-bd
 
 all: clean compile run
 
@@ -16,3 +16,6 @@ run:
 
 clean:
 	rm -f $(OUT)
+
+reset-bd:
+	cp BD/backupBD.csv BD/bd_partidas.csv

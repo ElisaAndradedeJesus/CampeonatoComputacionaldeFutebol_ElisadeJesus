@@ -27,6 +27,7 @@ int main(){
 
     char opcao;
     scanf(" %c", &opcao);
+    int result;
 
     while(opcao != 'Q' && opcao != 'q'){
 
@@ -43,18 +44,21 @@ int main(){
             atualizandoPartida(bdPartidas, bdTeams);
             atualizarDadosTeam(bdTeams, bdPartidas);
             classificacao = atualizarClassificacao(classificacao, bdTeams);
+            result = salvarClassificacaoEmArquivo(classificacao, "BD/bd_classificacao.csv");
 
         }else if(opcao == '4'){
 
             removendoPartida(bdPartidas, bdTeams);
             atualizarDadosTeam(bdTeams, bdPartidas);
             classificacao = atualizarClassificacao(classificacao, bdTeams);
+            result = salvarClassificacaoEmArquivo(classificacao, "BD/bd_classificacao.csv");
 
         }else if(opcao == '5'){
 
             inserindoPartida(bdPartidas, bdTeams, classificacao);
             atualizarDadosTeam(bdTeams, bdPartidas);
             classificacao = atualizarClassificacao(classificacao, bdTeams);
+            result = salvarClassificacaoEmArquivo(classificacao, "BD/bd_classificacao.csv");
 
         }else if(opcao == '6'){
             printf("Tabela de Classificação:\n");
@@ -75,7 +79,7 @@ int main(){
         interfaceUser();
         scanf(" %c", &opcao);
     }
-    
+
     classificacao = atualizarClassificacao(classificacao, bdTeams);
 
     if(salvarClassificacaoEmArquivo(classificacao, "BD/bd_classificacao.csv")){
